@@ -1,0 +1,20 @@
+<%- include("./partials/header.ejs") %>
+<body>
+  <%- include("./partials/navbar-user.ejs") %>
+
+  <div class="container-fluid">
+    <div class="jumbotron jumbotron-fluid p-5">
+      <h1 class="display-4"><%= article.title %></h1>
+      <hr class="my-3">
+      <p class="lead">Categoria: <%= article.category.title%></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="my-5">
+      <%- article.body%>
+    </div>
+  </div>
+
+<%- include("./partials/footer.ejs") %>
+</body>

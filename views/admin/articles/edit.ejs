@@ -1,0 +1,42 @@
+<%- include("../../partials/header") %>
+<body>
+  <%- include("../../partials/navbar") %>
+
+  <div class="container">
+    <h2>Editar artigo</h2>
+    <hr>
+
+    <form action="/articles/update" method="post">
+      <input type="hidden" name="id" value="<%= article.id%>">
+      <input type="text" name="title" placeholder="Título do artigo" class="form-control" value="<%= article.title %>">
+      <br>
+      <label>Categoria</label>
+      <select class="form-control" name="categoryId">
+        <% categories.forEach(category => { %>
+          <% if(category.id === article.categoryId) {%>
+            <option value="<%= category.id %>" selected><%= category.title %></option>
+          <% }else{ %>
+          <option value="<%= category.id %>"><%= category.title %></option>
+          <% } %>
+        <% }) %>
+      </select>
+      <br>
+      <textarea name="body" class="form-control" placeholder="Escreva o artigo" id="article-body">
+        <%- article.body %>
+      </textarea>
+      <br>
+      <button class="btn btn-primary">Editar</button>
+    </form>
+  </div>
+
+</body>
+<%- include("../../partials/footer") %>
+
+<script src="/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+  tinymce.init({
+    language: "pt_BR",
+    selector: "#article-body",
+    plugins: ["advlist autolink link image lists print preview hr search wordcount media tables paste emoticons"]
+  })
+</script>

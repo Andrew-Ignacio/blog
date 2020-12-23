@@ -1,0 +1,41 @@
+<%- include("./partials/header.ejs") %>
+<body>
+  <%- include("./partials/navbar-user.ejs") %>
+
+  <div class="container">
+
+    <div class="jumbotron jumbotron-fluid p-5">
+      <h1 class="display-4 text-center">LEIA MAIS ARTIGOS POSTADOS!</h1>
+      <hr class="my-5">
+    </div>
+
+    <% result.articles.rows.forEach(article => { %>
+      <div class="card my-5">
+        <div class="card-header">
+          <p class="lead""><%= article.title  %></p>
+        </div>
+        <div class="card-body">
+          <a href="/<%= article.slug%>" class="btn btn-primary w-100">Ler artigo</a>
+        </div>
+      </div>
+    <% }) %>
+
+    <div class="row my-5">
+      <div class="col-12 text-center">
+        <% if(result.page != 2) {%>
+          <a class="btn btn-primary" href="/articles/<%= result.page - 1 %>"><%= result.page - 1%></a>
+        <% } else{ %>
+          <a class="btn btn-primary" href="/">1</a>
+        <% } %>
+
+        <button class="btn btn-disabled"><%= result.page%></button>
+
+        <% if(result.next) { %>
+          <a class="btn btn-primary" href="/articles/<%= result.page + 1 %>"><%= result.page + 1%></a>
+        <% }%>
+      </div>
+    </div>
+
+  </div>
+<%- include("./partials/footer.ejs") %>
+</body>

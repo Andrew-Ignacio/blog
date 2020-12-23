@@ -1,0 +1,37 @@
+<%- include("../../partials/header") %>
+<body>
+  <%- include("../../partials/navbar") %>
+
+  <div class="container">
+    <h1>Usuário cadastrados</h1>
+
+    <a class="btn btn-primary" href="/admin/users/create">Cadastrar novo usuário</a>
+
+    <table class="table table-bordered my-5">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach(user => { %>
+          <tr>
+            <td><%= user.id%></td>
+            <td><%= user.email%></td>
+            <td>
+              <form action="/users/delete" method="post">
+                <input type="hidden" name="id" value="<%= user.id %>">
+                <button type="submit" class="btn btn-danger">Excluir</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+
+    </table>
+  </div>
+
+</body>
+<%- include("../../partials/footer") %>

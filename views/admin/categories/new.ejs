@@ -1,0 +1,17 @@
+<%- include("../../partials/header") %>
+<body>
+  <%- include("../../partials/navbar") %>
+
+  <div class="container">
+    <h2>Cadastro de categoria</h2>
+    <hr>
+
+    <form action="/categories/save" method="post">
+      <input type="text" name="title" placeholder="Tipo da categoria" class="form-control">
+      <br>
+      <button class="btn btn-primary">Cadastrar</button>
+    </form>
+  </div>
+
+</body>
+<%- include("../../partials/footer") %>

@@ -1,0 +1,25 @@
+<%- include("./partials/header.ejs") %>
+<body>
+  <%- include("./partials/navbar-user.ejs") %>
+
+  <div class="container">
+    <div class="jumbotron jumbotron-fluid p-5">
+      <h1 class="display-4"><span class="text-uppercase"><%= category.title %></span></h1>
+      <hr class="my-5">
+      <p class="lead">LEIA TODOS OS ARQUIVOS DE <span class="text-uppercase"><%= category.title %></span>: </p>
+    </div>
+    
+    <% articles.forEach(article => { %>
+      <div class="card my-5">
+        <div class="card-header">
+          <h3><%= article.title %></h3>
+        </div>
+        <div class="card-body">
+          <a href="/<%= article.slug %>" class="btn btn-primary">Ler artigo completo</a>
+        </div>
+      </div>
+    <% }) %>
+
+  </div>
+<%- include("./partials/footer.ejs") %>
+</body>

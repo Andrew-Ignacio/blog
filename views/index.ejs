@@ -1,0 +1,27 @@
+<%- include("./partials/header.ejs") %>
+<body>
+  <%- include("./partials/navbar-user.ejs") %>
+
+  <div class="container">
+
+    <div class="jumbotron jumbotron-fluid p-5">
+      <h1 class="DISPLAY-4 text-center">BEM VINDO(A) AO MELHOR BLOG DE TODOS!</h1>
+      <hr class="my-5">
+    </div>
+
+    <% articles.forEach(article => { %>
+      <div class="card my-5">
+        <div class="card-header">
+          <p class="lead""><%= article.title  %></p>
+        </div>
+        <div class="card-body">
+          <a href="/<%= article.slug%>" class="btn btn-primary w-100">Ler artigo</a>
+        </div>
+      </div>
+    <% }) %>
+
+    <a href="/articles/2" class="btn btn-primary my-5" style="float:right">Próxima página</a>
+
+  </div>
+<%- include("./partials/footer.ejs") %>
+</body>
